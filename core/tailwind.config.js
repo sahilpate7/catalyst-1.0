@@ -5,6 +5,7 @@ const config = {
     './components/**/*.{ts,tsx}',
     './vibes/**/*.{ts,tsx}',
     '!./node_modules/**', // Exclude everything in node_modules to speed up builds
+    './lib/**/*.{ts,tsx}',
   ],
   theme: {
     extend: {

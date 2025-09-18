@@ -14,6 +14,12 @@ import './components/site-header/register';
 import './components/site-theme/register';
 import './components/slideshow/register';
 import './components/sticky-sidebar/register';
+import './components/atf/image-text/register.makeswift';
+import './components/atf/team-members/register';
+import './components/atf/accordion/register.makeswift';
+import './components/atf/product-card/register.makeswift';
+import './components/atf/my-product-card/register';
+import './components/atf/feature-products/register';
 
 import { MakeswiftComponentType } from '@makeswift/runtime';
 

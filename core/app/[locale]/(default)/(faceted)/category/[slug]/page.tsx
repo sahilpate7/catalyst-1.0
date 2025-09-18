@@ -10,6 +10,7 @@ import { createCompareLoader } from '@/vibes/soul/primitives/compare-drawer/load
 import { ProductsListSection } from '@/vibes/soul/sections/products-list-section';
 import { getFilterParsers } from '@/vibes/soul/sections/products-list-section/filter-parsers';
 import { getSessionCustomerAccessToken } from '~/auth';
+import { getSubcategories } from '~/components/subcategory-list/component-data';
 import { facetsTransformer } from '~/data-transformers/facets-transformer';
 import { pageInfoTransformer } from '~/data-transformers/page-info-transformer';
 import { pricesTransformer } from '~/data-transformers/prices-transformer';
@@ -21,6 +22,7 @@ import { fetchFacetedSearch } from '../../fetch-faceted-search';
 
 import { CategoryViewed } from './_components/category-viewed';
 import { getCategoryPageData } from './page-data';
+import { SubcategoryList } from '~/components/subcategory-list';
 
 const getCachedCategory = cache((categoryId: number) => {
   return {
@@ -237,6 +239,17 @@ export default async function Category(props: Props) {
       href: product.path,
     }));
   });
+
+  const subcategories = await getSubcategories(
+    {
+      categoryId: Number(slug),
+    },
+    customerAccessToken,
+  );
+
+  if (subcategories.length == 0) {
+    return <SubcategoryList subcategories={subcategories} title={category.name} />;
+  }
 
   return (
     <>
